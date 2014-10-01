@@ -14,14 +14,79 @@ test('should return true if input is a valid email address', function(t){
 	t.true(helper.isValid('jane@example.com'));
 });
 
+test('should return true if input is a valid email address with mixed chars and casing', function(t){
+	t.plan(1);
+	t.true(helper.isValid('BoB+47@e-conomic.com'));
+});
+
+test('should return true if input is a valid email address with underscores and dashes', function(t){
+	t.plan(1);
+	t.true(helper.isValid('BoB_-@e-conomic.com'));
+});
+
 test('should return false if input is an invalid email address', function(t){
 	t.plan(1);
 	t.false(helper.isValid('janeexample.com'));
 });
 
+test('should return true if the host name has uppercase chars', function(t) {
+	t.plan(1);
+	t.true(helper.isValid('bob@GMAIL.COM'));
+});
+
+test('should return false if input has a domain with a dash followed by a dot', function(t) {
+	t.plan(1);
+	t.false(helper.isValid('bob@e-conomic-.com'));
+});
+
+test('should return false if input has an underscore in the host name', function(t) {
+	t.plan(1);
+	t.false(helper.isValid('BoB_-@e-conomic_.com'));
+});
+
+test('should return false if input has a domain with two consecutive dots', function(t) {
+	t.plan(1);
+	t.false(helper.isValid('bob@e-conomic..com'));
+});
+
+test('should return true if input has a long top-level domain', function(t) {
+	t.plan(1);
+	t.true(helper.isValid('bob@e-conomic.comxxsjsiw'));
+});
+
+test('should return true if the top-level domain has unicode chars', function(t) {
+	t.plan(1);
+	t.true(helper.isValid('bob@e-conomic.集团'));
+});
+
+test('should return false the top-level domain is too short', function(t) {
+	t.plan(1);
+	t.false(helper.isValid('bob@e-conomic.c'));
+});
+
+test('should return false the local part is invalid', function(t) {
+	t.plan(1);
+	t.false(helper.isValid('b€b@e-conomic.com'));
+});
+
+test('should return false the host name is invalid', function(t) {
+	t.plan(1);
+	t.false(helper.isValid('bob@e-c?onomic.com'));
+});
+
+test('should return false the top-level domain is invalid', function(t) {
+	t.plan(1);
+	t.false(helper.isValid('bob@e-conomic.c?m'));
+});
+
 test('should return false if input is empty', function(t) {
 	t.plan(1);
 	t.false(helper.isValid(''));
+});
+
+test('should return false if input is null', function(t) {
+	t.plan(1);
+	t.false(helper.isValid(null));
 });
 
 if (validEmailAddresses.length) {
