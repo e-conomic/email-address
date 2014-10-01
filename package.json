@@ -22,7 +22,7 @@
     "url": "https://github.com/e-conomic/email-address/issues"
   },
   "homepage": "https://github.com/e-conomic/email-address",
-  "dependencies": {
-    "tape": "^3.0.0"
+  "devDependencies": {
+    "tape": "3.0.0"
   }
 }
