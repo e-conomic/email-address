@@ -1,6 +1,6 @@
 {
   "name": "email-address",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Various helper functions and regexes for handling email addresses",
   "main": "index.js",
   "directories": {
