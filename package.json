@@ -1,0 +1,28 @@
+{
+  "name": "email-address",
+  "version": "0.0.0",
+  "description": "Various helper functions and regexes for handling email addresses",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test/*-test.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/e-conomic/email-address.git"
+  },
+  "keywords": [
+    "email"
+  ],
+  "author": "E-conomic",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/e-conomic/email-address/issues"
+  },
+  "homepage": "https://github.com/e-conomic/email-address",
+  "dependencies": {
+    "tape": "^3.0.0"
+  }
+}
