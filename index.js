@@ -13,11 +13,19 @@ var multipleEmailPattern = new RegExp('^\\s*(?:' + emailPatternSource + '\\s*,\\
 
 var emailPatternOrEmptyString = new RegExp('^$|' + emailPattern.source, 'i');
 
+function isValid(email) {
+	return emailPattern.test(email);
+}
+
+function isMultipleValid(emails) {
+	if (typeof emails !== 'string') return false;
+	return emails.trim().split(/\s*,\s*/).every(isValid);
+}
+
 module.exports = {
 	single: emailPattern,
 	multiple: multipleEmailPattern,
 	optional: emailPatternOrEmptyString,
-	isValid: function (email) {
-		return emailPattern.test(email);
-	}
+	isValid: isValid,
+	isMultipleValid: isMultipleValid
 }

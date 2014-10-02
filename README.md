@@ -7,13 +7,15 @@ This module ensure that we use the same approach for validating a given email ad
 ## Overview
 
 ### Helper functions
-One helper function, `isValid`, is exposed. It is basically a wrapper calling `.single.test` from the regex section on the input.
+Two helper functions, `isValid` and `isMultipleValid`, are exposed. `isValid` is basically a wrapper calling `.single.test` from the regex section on the input, and `isMultipleValid` splits a string on commas (,), and verify that every item is a valid email address.
 
 Usage:
 ```js
 var email = require('email-address');
 email.isValid('joe@example.com'); // true
 email.isValid('foo bar'); // false
+email.isMultipleValid('john.doe@example.com,jane.doe@example.com'); // true
+email.isMultipleValid('john.doe@example.com,jane.doe@example..com'); // false
 ```
 
 ### Regexes

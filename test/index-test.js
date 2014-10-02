@@ -108,6 +108,26 @@ if (invalidEmailAddresses.length) {
 }
 
 
+// is multiple valid ---------------------------------------------------
+test('isMultipleValid should return true if a string of email adresses are valid', function(t) {
+	t.plan(1);
+	t.true(helper.isMultipleValid('jane.doe@example.com,john.doe@example.com'));
+});
+
+test('isMultipleValid should return false if a string of email adresses has one or more invalid', function(t) {
+	t.plan(1);
+	t.false(helper.isMultipleValid('jane.doe@example.com,john@.com,john.doe@.com'));
+});
+
+test('isMultipleValid should return true if a string that has whitespaces has valid email adresses', function(t) {
+	t.plan(4);
+	t.true(helper.isMultipleValid('  jane.doe@example.com,john.doe@example.com'));
+	t.true(helper.isMultipleValid('jane.doe@example.com,john.doe@example.com  '));
+	t.true(helper.isMultipleValid('  jane.doe@example.com,john.doe@example.com  '));
+	t.true(helper.isMultipleValid('  jane.doe@example.com,   john.doe@example.com  '));
+});
+
+
 // email pattern -------------------------------------------------------
 test('should check if a string is a valid email address', function(t) {
 	t.plan(1);
