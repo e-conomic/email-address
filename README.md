@@ -11,7 +11,7 @@ One helper function, `isValid`, is exposed. It is basically a wrapper calling `.
 
 Usage:
 ```js
-var email = require('email-address-helpers');
+var email = require('email-address');
 email.isValid('joe@example.com'); // true
 email.isValid('foo bar'); // false
 ```
@@ -25,7 +25,7 @@ The following regexes are exposed:
 
 Usage:
 ```js
-var email = require('email-address-helpers');
+var email = require('email-address');
 
 // input is a vaild email address
 email.single.test('joe@example.com'); // true
