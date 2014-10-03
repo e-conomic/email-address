@@ -34,6 +34,12 @@ test('should return true if the host name has uppercase chars', function(t) {
 	t.true(helper.isValid('bob@GMAIL.COM'));
 });
 
+test('should return true if the host name has special chars like acents and umlauts', function(t) {
+	t.plan(2);
+	t.true(helper.isValid('böb@example.com'), 'should handle umlaut in local');
+	t.true(helper.isValid('bob@ëxample.com'), 'should handle umlaut in domain');
+});
+
 test('should return false if input has a domain with a dash followed by a dot', function(t) {
 	t.plan(1);
 	t.false(helper.isValid('bob@e-conomic-.com'));
