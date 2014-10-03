@@ -6,7 +6,21 @@
 // Derived from:
 // [a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])
 // this should handle 99.99% of all email addresses in use today.
-var emailPattern = /^[A-Za-z0-9\u4e00-\u9eff\u0400-\u04ff\u0900-\u097f\u3040-\u309f\u0600-\u06ff!#$%&'*+/=?^_`{|}~-]+(?:\.[A-Za-z0-9\u4e00-\u9eff\u0400-\u04ff\u0900-\u097f\u3040-\u309f\u0600-\u06ff!#$%&'*+/=?^_`{|}~-]+)*@(?:[A-Za-z0-9\u4e00-\u9eff\u0400-\u04ff\u0900-\u097f\u3040-\u309f\u0600-\u06ff](?:[A-Za-z0-9\u4e00-\u9eff\u0400-\u04ff\u0900-\u097f\u3040-\u309f\u0600-\u06ff-]*[A-Za-z0-9\u4e00-\u9eff\u0400-\u04ff\u0900-\u097f\u3040-\u309f\u0600-\u06ff])?\.)+[A-Za-z0-9\u4e00-\u9eff\u0400-\u04ff\u0900-\u097f\u3040-\u309f\u0600-\u06ff](?:[A-Za-z0-9\u4e00-\u9eff\u0400-\u04ff\u0900-\u097f\u3040-\u309f\u0600-\u06ff-]*[A-Za-z0-9\u4e00-\u9eff\u0400-\u04ff\u0900-\u097f\u3040-\u309f\u0600-\u06ff])$/i;
+var validChars = function(andAlso, something) {
+	return [
+		'[',
+		'A-Za-z0-9\\u4e00-\\u9eff\\u0400-\\u04ff\\u0900-\\u097f\\u3040-\\u309f\\u0600-\\u06ff',
+		(typeof andAlso === 'string' ? andAlso : ''),
+		']',
+		(typeof something === 'string' ? something : '')
+	].join('');
+}
+
+var local = validChars("!#$%&'*+/=?^_`{|}~-", '+')+"(?:\\."+validChars("!#$%&'*+/=?^_`{|}~-", '+')+")*";
+var domain = "(?:"+validChars()+"(?:"+validChars('-', '*')+validChars()+")?\\.)+";
+var topLevelDomain = validChars()+"(?:"+validChars('-', '*')+validChars()+")";
+
+var emailPattern = new RegExp('^' + local + '@' + domain + topLevelDomain + '$', 'i');
 
 var emailPatternSource = emailPattern.source.slice(1, -1);
 var multipleEmailPattern = new RegExp('^\\s*(?:' + emailPatternSource + '\\s*,\\s*)*' + emailPatternSource + '$');
