@@ -39,10 +39,3 @@ email.multiple.test('joe@example.com, jane@example.com'); // true
 email.optional.test('jane@example.com'); // true
 email.optional.test(''); // true
 ```
-
-## Tests and development
-The tests uses substacks Tape. Use a program like `nodemon` to auto run the tests on file change:
-
-```sh
-nodemon -x 'npm test'
-```
