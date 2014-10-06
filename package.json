@@ -7,7 +7,7 @@
     "test": "test"
   },
   "scripts": {
-    "test": "node test/*-test.js"
+    "test": "node ./test.js"
   },
   "repository": {
     "type": "git",
@@ -23,6 +23,8 @@
   },
   "homepage": "https://github.com/e-conomic/email-address",
   "devDependencies": {
-    "tape": "3.0.0"
+    "chai": "1.9.1",
+    "mocha": "1.21.4",
+    "mocha-jshint": "0.0.9"
   }
 }
