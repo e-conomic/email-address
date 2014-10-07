@@ -30,7 +30,9 @@ function isValid(email) {
 }
 
 function isMultipleValid(emails) {
-	if (typeof emails !== 'string') return false;
+	if (typeof emails !== 'string') {
+		return false;
+	}
 	return emails.trim().split(/\s*,\s*/).every(isValid);
 }
 
@@ -40,4 +42,4 @@ module.exports = {
 	optional: emailPatternOrEmptyString,
 	isValid: isValid,
 	isMultipleValid: isMultipleValid
-}
+};
