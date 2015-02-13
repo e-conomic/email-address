@@ -1,4 +1,5 @@
-# Email address helpers
+# Email address helpers [![Build Status](https://travis-ci.org/e-conomic/email-address.svg?branch=master)](https://travis-ci.org/e-conomic/email-address)
+
 Regular expressions ensuring the given input is a valid address.
 
 This module ensure that we use the same approach for validating a given email address across all our services. It was originally lifted from the debitoor-app *source/util*-folder into its own module.
