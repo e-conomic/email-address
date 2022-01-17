@@ -1,3 +1,8 @@
+Archived
+======
+Tech Leads: Repository archived due to inactivity in more than 6 months.
+Please remember to add a CODEOWNERS file to the root of the repository when unarchiving.
+
 # Email address helpers [![Build Status](https://travis-ci.org/e-conomic/email-address.svg?branch=master)](https://travis-ci.org/e-conomic/email-address)
 
 Regular expressions ensuring the given input is a valid address.
